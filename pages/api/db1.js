@@ -1,8 +1,7 @@
+import { GoogleSpreadsheet } from 'google-spreadsheet';
 import credentials from '../credentials/credentials.json';
-import { GoogleSpreadsheet } from 'google-spreadsheet'
 
-
-export default async (req, res) => {
+export default async function ApiDb(req, res) {
 
   const doc = new GoogleSpreadsheet('1YdVPwT7f9H-3ADXyMtKSP6JZ-r60Ans51EpgzruzIcw');
 
