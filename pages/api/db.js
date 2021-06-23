@@ -2,6 +2,9 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import credentials from '../credentials/credentials.json';
 
 export default async function Games(req, res) {
+
+  const dynamicDate = new Date();
+
   const doc = new GoogleSpreadsheet('1rG9KfIxH-xiCA0oc7hTKyMF_nGZXrjTjkMEo8Jvezhg');
 
   await doc.useServiceAccountAuth({
@@ -33,6 +36,7 @@ export default async function Games(req, res) {
   console.log('CONECTADO A BASE DE DADOS', doc.title);
 
   res.send({
+    date: dynamicDate.toGMTString(),
     title: doc.title,
     games
   })
