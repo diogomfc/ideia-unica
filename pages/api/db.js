@@ -3,7 +3,8 @@ import credentials from '../credentials/credentials.json';
 
 export default async function Games(req, res) {
 
-  const dynamicDate = new Date();
+
+  const dynamicDate = new Date(); //Data Atual
 
   const doc = new GoogleSpreadsheet('1rG9KfIxH-xiCA0oc7hTKyMF_nGZXrjTjkMEo8Jvezhg');
 
