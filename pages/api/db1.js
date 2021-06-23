@@ -1,4 +1,4 @@
-import credentials from '../../credentials1/credentials.json';
+import credentials from '../credentials/credentials.json';
 import { GoogleSpreadsheet } from 'google-spreadsheet'
 
 
