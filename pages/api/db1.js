@@ -7,7 +7,7 @@ export default async function ApiDb(req, res) {
 
   await doc.useServiceAccountAuth({
     client_email: credentials.client_email,
-    private_key: credentials.private_key
+    private_key: credentials.private_key,
   });
 
   await doc.loadInfo(); // Carrega as infos da planilha
