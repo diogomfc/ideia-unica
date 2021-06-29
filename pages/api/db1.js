@@ -21,6 +21,7 @@ export default async function ApiDb(req, res) {
   const dbMetricasConsultoresAuto = rows.map(({
     id,
     consultor,
+    puxadas,
     carteirizadas,
     VA,
     VR,
@@ -36,6 +37,7 @@ export default async function ApiDb(req, res) {
     return {
       id,
       consultor,
+      puxadas,
       carteirizadas,
       VA,
       VR,
