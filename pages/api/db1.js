@@ -28,7 +28,8 @@ export default async function ApiDb(req, res) {
     VRobjetivo,
     PCobjetivo,
     MetaDia,
-    data
+    data,
+    img
 
   }) => {
 
@@ -42,7 +43,8 @@ export default async function ApiDb(req, res) {
       VRobjetivo,
       PCobjetivo,
       MetaDia,
-      data
+      data,
+      img
     }
   })
 
