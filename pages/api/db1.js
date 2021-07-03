@@ -13,11 +13,9 @@ export default async function ApiDb(req, res) {
   await doc.loadInfo(); // Carrega as infos da planilha
   //console.log('Titulo da planilha', doc.title);
 
+  //Carregar dados da guia geral
   const sheet = doc.sheetsByIndex[0];
   const rows = await sheet.getRows();
-
-
-  //temploe2e
   const dbMetricasConsultoresAuto = rows.map(({
     id,
     consultor,
@@ -50,12 +48,135 @@ export default async function ApiDb(req, res) {
     }
   })
 
+  //Carregar dados da guia metrica dia
+  const sheetMetricaDia = doc.sheetsByIndex[1];
+  const rowsMetricaDia = await sheetMetricaDia.getRows();
+  const guiaMetricaDia = rowsMetricaDia.map(({
+    Consultores,
+    Puxadas,
+    Carteirizadas,
+    Vistorias_Realizadas,
+    Pastas_Completas,
+    Contratos_Emitidos,
+    Pagos,
+    Originacao,
+    Data
+  }) => {
+    return {
+      Consultores,
+      Puxadas,
+      Carteirizadas,
+      Vistorias_Realizadas,
+      Pastas_Completas,
+      Contratos_Emitidos,
+      Pagos,
+      Originacao,
+      Data
+    }
+  })
+
+   //Carregar dados da guia metrica mes
+   const sheetMetricaMes = doc.sheetsByIndex[2];
+   const rowsMetricaMes = await sheetMetricaMes.getRows();
+   const guiaMetricaMes = rowsMetricaMes.map(({
+    Lider,
+    mes,
+    Consultores,
+    produtividade,
+    meta_MTD,
+    meta_Total,
+    atingimento_Produtividade,
+    originacao_Real,
+    originacao_MTD,
+    meta_Originacao,
+    atingimento_Originacao,
+    sem1,
+    sem2,
+    sem3,
+    sem4,
+    sem5,
+    atingiemento,
+    upsell,
+    originacao,
+    upsellsPagos
+  }) => {
+
+    return {
+      Lider,
+      mes,
+      Consultores,
+      produtividade,
+      meta_MTD,
+      meta_Total,
+      atingimento_Produtividade,
+      originacao_Real,
+      originacao_MTD,
+      meta_Originacao,
+      atingimento_Originacao,
+      sem1,
+      sem2,
+      sem3,
+      sem4,
+      sem5,
+      atingiemento,
+      upsell,
+      originacao,
+      upsellsPagos
+     }
+   })
+
+   //Carregar dados da guia Cadastro Consultores
+   const sheetCadastroConsultores = doc.sheetsByIndex[3];
+   const rowsCadastroConsultores= await sheetCadastroConsultores.getRows();
+   const guiaCadastroConsultores = rowsCadastroConsultores.map(({
+    Consultores,
+    Email_Consultores,
+    Login_Consultores,
+    Time,
+    Lider,
+    AvatarConsultores  
+  }) => {
+
+    return {
+    Consultores,
+    Email_Consultores,
+    Login_Consultores,
+    Time,
+    Lider,
+    AvatarConsultores
+
+     }
+   })
+
+   //Carregar dados da guia Cadastro Admin
+   const sheetCadastroAdmin = doc.sheetsByIndex[4];
+   const rowsCadastroAdmin= await sheetCadastroAdmin.getRows();
+   const guiaCadastroAdmin = rowsCadastroAdmin.map(({
+    Nome_Admin,
+    Email_Admin,
+    Login_Admin,
+    Time,
+    Avatar_Admin 
+  }) => {
+
+    return {
+      Nome_Admin,
+      Email_Admin,
+      Login_Admin,
+      Time,
+      Avatar_Admin 
+     }
+   })
+
   console.log('CONECTADO A BASE DE DADOS', doc.title);
 
   res.send({
     title: doc.title,
-    totalRow: sheet.rowCount,
     dbMetricasConsultoresAuto,
+    guiaMetricaDia,
+    guiaMetricaMes,
+    guiaCadastroConsultores,
+    guiaCadastroAdmin
   })
 }
 
