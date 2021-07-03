@@ -60,7 +60,8 @@ export default async function ApiDb(req, res) {
     Contratos_Emitidos,
     Pagos,
     Originacao,
-    Data
+    Data,
+    AvatarConsultores
   }) => {
     return {
       Consultores,
@@ -71,7 +72,8 @@ export default async function ApiDb(req, res) {
       Contratos_Emitidos,
       Pagos,
       Originacao,
-      Data
+      Data,
+      AvatarConsultores
     }
   })
 
