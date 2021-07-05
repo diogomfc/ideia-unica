@@ -170,7 +170,7 @@ export default async function ApiDb(req, res) {
      }
    })
 
-   //Carregar dados da guia parametros
+  //Carregar dados da guia parametros
    const sheetParametros = doc.sheetsByIndex[5];
    const rowsParametros= await sheetParametros.getRows();
    const guiaParametros = rowsParametros.map(({
@@ -201,6 +201,29 @@ export default async function ApiDb(req, res) {
      }
    })
 
+    //Carregar dados da guia Historico Cliente Dia
+   const sheetHistoricoClientesDia = doc.sheetsByIndex[6];
+   const rowsHistoricoClientesDia= await sheetHistoricoClientesDia.getRows();
+   const guiaHistoricoClientesDia= rowsHistoricoClientesDia.map(({
+    Consultores,
+    Cliente,
+    Descricao,
+    Status,
+    Originacao,
+    Data,
+    obs
+  }) => {
+
+    return {
+      Consultores,
+      Cliente,
+      Descricao,
+      Status,
+      Originacao,
+      Data,
+      obs
+     }
+   })
   console.log('CONECTADO A BASE DE DADOS', doc.title);
 
   res.send({
@@ -210,7 +233,8 @@ export default async function ApiDb(req, res) {
     guiaMetricaMes,
     guiaCadastroConsultores,
     guiaCadastroAdmin,
-    guiaParametros
+    guiaParametros,
+    guiaHistoricoClientesDia
   })
 }
 
