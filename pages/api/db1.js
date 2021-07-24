@@ -97,7 +97,7 @@ export default async function ApiDb(req, res) {
     sem3,
     sem4,
     sem5,
-    atingiemento,
+    atingimento,
     upsell,
     originacao,
     upsellsPagos
@@ -120,7 +120,7 @@ export default async function ApiDb(req, res) {
       sem3,
       sem4,
       sem5,
-      atingiemento,
+      atingimento,
       upsell,
       originacao,
       upsellsPagos
